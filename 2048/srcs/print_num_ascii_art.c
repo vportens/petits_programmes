@@ -12,6 +12,51 @@ int ft_strlen(char *nbr)
 }
 
 /*
+	000
+	0 0
+	0 0
+	0 0
+	000
+*/
+
+void	print_zero(int centre_x, int centre_y)
+{
+		move(centre_x -2, centre_y - 1);
+		addch('0');
+		move(centre_x -2, centre_y);
+		addch('0');
+		move(centre_x -2, centre_y + 1);
+		addch('0');
+
+
+		move(centre_x -1, centre_y - 1);
+		addch('0');
+		move(centre_x -1, centre_y + 1);
+		addch('0');
+		
+		move(centre_x , centre_y - 1);
+		addch('0');
+		move(centre_x , centre_y + 1);
+		addch('0');
+
+		move(centre_x + 1 , centre_y - 1);
+		addch('0');
+		move(centre_x + 1, centre_y + 1);
+		addch('0');
+
+
+
+
+
+		move(centre_x +2, centre_y - 1);
+		addch('0');
+		move(centre_x +2, centre_y);
+		addch('0');
+		move(centre_x +2, centre_y + 1);
+		addch('0');
+}
+
+/*
 	999	
     9 9
     999
@@ -319,6 +364,8 @@ void print_nbr(char nbr, int centre_x, int centre_y)
 		return (print_height(centre_x, centre_y));
 	else if(nbr == '9')
 		return (print_nine(centre_x, centre_y));
+	else if (nbr == '0')
+		return (print_zero(centre_x, centre_y));
 
 }
 
@@ -347,12 +394,21 @@ void	print_ascii_num(int size, int map[5][5])
 		j = 0;
 		while (j < size)
 		{
+			if (map[i][j] == 0)
+				j++;
+			else
+			{
 			start_color();	
 			if (map[i][j] < 16)
+			{
 				init_pair(1, COLOR_RED, COLOR_BLUE);
+				attron(COLOR_PAIR(1));
+			}
 			else if (map[i][j] < 128)
-				init_pair(1, COLOR_MAGENTA, COLOR_BLUE);
-			attron(COLOR_PAIR(1));
+			{
+				init_pair(2, COLOR_MAGENTA, COLOR_BLUE);
+				attron(COLOR_PAIR(2));
+			}
 			nbr = ft_itoa(map[i][j]);
 			len_nbr = ft_strlen(nbr);
 			n = 0;
@@ -361,9 +417,13 @@ void	print_ascii_num(int size, int map[5][5])
 				print_nbr(nbr[n], len_halfcase_x + len_case_x * i, (len_halfcase_y + len_case_y * j) + ((-len_nbr /2 + n) * 5));
 				n++;
 			}
-			
+			if (map[i][j] > 4)	
+			attroff(COLOR_PAIR(2));
+			else 
 			attroff(COLOR_PAIR(1));
+			refresh();
 			j++;
+			}
 
 		}
 		i++;
