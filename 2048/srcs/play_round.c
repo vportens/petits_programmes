@@ -6,7 +6,7 @@
 /*   By: viporten <viporten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:21:35 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/03/19 23:43:20 by viporten         ###   ########.fr       */
+/*   Updated: 2022/03/20 00:32:47 by viporten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	play_round(int board[5][5], int size, int *score)
 		print_score(score);
 		refresh();
 		c = getch();
+	
 		switch (c)
 		{
 			case KEY_UP:

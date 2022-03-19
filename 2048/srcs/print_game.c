@@ -63,10 +63,8 @@ void	print_game(int map[5][5], int size)
 		print_ascii_num(size, map);
 }
 
-int main(int ac, char **av)
+int main()
 {
-	if (ac > 2)
-		return (0);
 
 	int size = 5;
 	int	score;

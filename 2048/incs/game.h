@@ -1,6 +1,10 @@
 #ifndef	GAME_H 
 #define	GAME_H 
 
+#include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
+
 enum e_const
 {
 	WIN_VALUE = 32
@@ -25,5 +29,8 @@ int		play_round(int board[5][5], int size, int *score);
 int		play_game(int size);
 
 void	print_score(int *score);
+
+int	get_next_line(int fd, char **line);
+int	score_page(char *file_name);
 
 #endif
