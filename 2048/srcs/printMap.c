@@ -1,5 +1,6 @@
 #include <ncurses.h>
 #include <stdlib.h>
+#include "game.h"
 
 
 
@@ -65,6 +66,17 @@ void	print_border()
 		}
 		i++;
 	}
+}
+
+void	print_score(int *score)
+{
+		char *to_print;
+
+		to_print = ft_itoa(*score);
+		move(1, 1);
+		printw("your score is : ");
+		printw(to_print);
+
 }
 
 void	print_map(int size) {

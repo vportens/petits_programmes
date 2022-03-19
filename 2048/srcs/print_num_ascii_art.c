@@ -409,6 +409,21 @@ void	print_ascii_num(int size, int map[5][5])
 				init_pair(2, COLOR_MAGENTA, COLOR_BLUE);
 				attron(COLOR_PAIR(2));
 			}
+			else if (map[i][j] < 256)
+			{
+				init_pair(3, COLOR_YELLOW, COLOR_CYAN);
+				attron(COLOR_PAIR(3));
+			}
+			else if (map[i][j] < 512)
+			{
+				init_pair(4, COLOR_YELLOW, COLOR_CYAN);
+				attron(COLOR_PAIR(4));
+			}
+			else
+			{
+				init_pair(5, COLOR_YELLOW, COLOR_YELLOW);
+				attron(COLOR_PAIR(5));
+			}
 			nbr = ft_itoa(map[i][j]);
 			len_nbr = ft_strlen(nbr);
 			n = 0;
@@ -417,10 +432,18 @@ void	print_ascii_num(int size, int map[5][5])
 				print_nbr(nbr[n], len_halfcase_x + len_case_x * i, (len_halfcase_y + len_case_y * j) + ((-len_nbr /2 + n) * 5));
 				n++;
 			}
-			if (map[i][j] > 4)	
-			attroff(COLOR_PAIR(2));
-			else 
+
+			if (map[i][j] < 16)	
 			attroff(COLOR_PAIR(1));
+			else if (map[i][j] < 128)
+			attroff(COLOR_PAIR(2));
+
+			else if (map[i][j] < 256)
+			attroff(COLOR_PAIR(3));
+			else if (map[i][j] < 512)
+			attroff(COLOR_PAIR(4));
+			else 
+			attroff(COLOR_PAIR(5));
 			refresh();
 			j++;
 			}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   play_round.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: viporten <viporten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:21:35 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/03/19 20:38:36 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/03/19 23:43:20 by viporten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	play_round(int board[5][5], int size, int *score)
 	{
 		clear();
 		print_game(board, size);
+		print_score(score);
 		refresh();
 		c = getch();
 		switch (c)

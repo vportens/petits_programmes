@@ -24,4 +24,6 @@ int		is_game_over(int board[5][5], int size);
 int		play_round(int board[5][5], int size, int *score);
 int		play_game(int size);
 
+void	print_score(int *score);
+
 #endif
