@@ -6,7 +6,7 @@
 
 
 
-void	print_game(int map[4][4], int size)
+void	print_game(int map[5][5], int size)
 {
 	print_map(size);
 	
@@ -35,14 +35,25 @@ void	print_game(int map[4][4], int size)
 		while (j < size)
 		{
 			nbr = ft_itoa(map[i][j]);
+
+
 			if (nbr == NULL)
 				return ;
-			attron(A_BOLD | A_UNDERLINE);
-			move(len_halfcase_x + len_case_x * i, len_halfcase_y + len_case_y * j);
-			printw(nbr, (len_halfcase_x + len_case_x * i) * 2, (len_halfcase_y + len_case_y * j) * 2);
-	//	addch(map[i][j] + '0');
-			j++;
-			free(nbr);
+			if (nbr[0] == '0')
+			{
+				free(nbr);
+				j++;
+			}
+			else
+			{
+				attron(A_BOLD | A_UNDERLINE);
+				move(len_halfcase_x + len_case_x * i, len_halfcase_y + len_case_y * j);
+				printw(nbr, (len_halfcase_x + len_case_x * i) * 2, (len_halfcase_y + len_case_y * j) * 2);
+				attroff(A_BOLD | A_UNDERLINE);
+		//	addch(map[i][j] + '0');
+				j++;
+				free(nbr);
+			}
 		}
 		i++;
 		
@@ -60,11 +71,14 @@ int main()
 
 
 	initscr();
-
-	start_color();	
+	keypad(stdscr, TRUE);
+	cbreak();
+	noecho();
+	curs_set(0);
+	start_color();
 	init_pair(1, COLOR_RED, COLOR_BLACK);
 	attron(COLOR_PAIR(1));
-	print_game(map, size);
+	score = play_game(size);
 	attroff(COLOR_PAIR(1));
 	refresh();
 	while (1)
