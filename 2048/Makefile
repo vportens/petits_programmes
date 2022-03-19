@@ -9,7 +9,8 @@ vpath %.c $(foreach dir, $(SRC_DIR), $, $(dir):)
 
 SRCS =  print_game.c				\
 	printMap.c				\
-	ft_itao.c
+	ft_itao.c	\
+	print_num_ascii_art.c
 
 
 OBJ_DIR	=	./objs

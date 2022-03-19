@@ -1,6 +1,8 @@
 #include <ncurses.h>
 #include <stdlib.h>
 
+
+
 void	print_line(int size)
 {
 	int i;
@@ -67,6 +69,7 @@ void	print_border()
 
 void	print_map(int size) {
 
+	clear();
 	print_border();
 	print_colonm(size);
 	print_line(size);

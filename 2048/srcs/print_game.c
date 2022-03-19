@@ -26,6 +26,8 @@ void	print_game(int map[4][4], int size)
 
 	char *nbr;
 
+	if (COLS < 26 * size + 1|| LINES < 6 * size + 1)
+	{
 	while (i < size)
 	{
 	
@@ -38,7 +40,6 @@ void	print_game(int map[4][4], int size)
 			attron(A_BOLD | A_UNDERLINE);
 			move(len_halfcase_x + len_case_x * i, len_halfcase_y + len_case_y * j);
 			printw(nbr, (len_halfcase_x + len_case_x * i) * 2, (len_halfcase_y + len_case_y * j) * 2);
-			
 	//	addch(map[i][j] + '0');
 			j++;
 			free(nbr);
@@ -46,13 +47,16 @@ void	print_game(int map[4][4], int size)
 		i++;
 		
 	}
+	}
+	else
+		print_ascii_num(size, map);
 }
 
 int main()
 {
 	int size = 4;
 	int map[4][4] = {{1,2,3,4}, {5,6,7,8}, {12,23,34,45}, {999,888,777,555}};
-	
+	char c;	
 
 
 	initscr();
@@ -63,8 +67,17 @@ int main()
 	print_game(map, size);
 	attroff(COLOR_PAIR(1));
 	refresh();
-	getch();
+	while (1)
+	{
+		c = getch();
+		print_game(map, size);
+		refresh();
+		if (c == 'q')
+			break;
+
+	}
 	endwin();
+
 
 
 	return (0);
