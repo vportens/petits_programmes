@@ -6,11 +6,11 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 15:17:54 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/03/19 17:18:49 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/03/19 20:41:08 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	merge_left(int board[5][5], int size)
+int	merge_left(int board[5][5], int size, int *score)
 {
 	int	i;
 	int	j;
@@ -32,6 +32,7 @@ int	merge_left(int board[5][5], int size)
 					if (board[i][k] == board[i][j])
 					{
 						board[i][j] *= 2;
+						*score = *score + board[i][j];
 						board[i][k] = 0;
 						ret = 0;
 						break ;
@@ -48,7 +49,7 @@ int	merge_left(int board[5][5], int size)
 	return (ret);
 }
 
-int	merge_right(int board[5][5], int size)
+int	merge_right(int board[5][5], int size, int *score)
 {
 	int	i;
 	int	j;
@@ -70,6 +71,7 @@ int	merge_right(int board[5][5], int size)
 					if (board[i][k] == board[i][j])
 					{
 						board[i][j] *= 2;
+						*score = *score + board[i][j];
 						board[i][k] = 0;
 						ret = 0;
 						break ;
@@ -86,7 +88,7 @@ int	merge_right(int board[5][5], int size)
 	return (ret);
 }
 
-int	merge_up(int board[5][5], int size)
+int	merge_up(int board[5][5], int size, int *score)
 {
 	int	i;
 	int	j;
@@ -108,6 +110,7 @@ int	merge_up(int board[5][5], int size)
 					if (board[k][i] == board[j][i])
 					{
 						board[j][i] *= 2;
+						*score = *score + board[j][i];
 						board[k][i] = 0;
 						ret = 0;
 						break ;
@@ -124,7 +127,7 @@ int	merge_up(int board[5][5], int size)
 	return (ret);
 }
 
-int	merge_down(int board[5][5], int size)
+int	merge_down(int board[5][5], int size, int *score)
 {
 	int	i;
 	int	j;
@@ -146,6 +149,7 @@ int	merge_down(int board[5][5], int size)
 					if (board[k][i] == board[j][i])
 					{
 						board[j][i] *= 2;
+						*score = *score + board[j][i];
 						board[k][i] = 0;
 						ret = 0;
 						break ;

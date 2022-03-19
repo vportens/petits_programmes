@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 15:32:01 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/03/19 17:23:00 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/03/19 20:38:18 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ static void	swap(int *a, int *b)
 	*b = temp;
 }
 
-int	move_left(int board[5][5], int size)
+int	move_left(int board[5][5], int size, int *score)
 {
 	int	i;
 	int	empty;
 	int	full;
 	int	ret;
 
-	ret = merge_left(board, size);
+	ret = merge_left(board, size, score);
 	i = 0;
 	while (i < size)
 	{
@@ -53,14 +53,14 @@ int	move_left(int board[5][5], int size)
 	return (ret);
 }
 
-int	move_right(int board[5][5], int size)
+int	move_right(int board[5][5], int size, int *score)
 {
 	int	i;
 	int	empty;
 	int	full;
 	int	ret;
 
-	ret = merge_right(board, size);
+	ret = merge_right(board, size, score);
 	i = 0;
 	while (i < size)
 	{
@@ -85,14 +85,14 @@ int	move_right(int board[5][5], int size)
 	return (ret);
 }
 
-int	move_up(int board[5][5], int size)
+int	move_up(int board[5][5], int size, int *score)
 {
 	int	i;
 	int	empty;
 	int	full;
 	int	ret;
 
-	ret = merge_up(board, size);
+	ret = merge_up(board, size, score);
 	i = 0;
 	while (i < size)
 	{
@@ -117,14 +117,14 @@ int	move_up(int board[5][5], int size)
 	return (ret);
 }
 
-int	move_down(int board[5][5], int size)
+int	move_down(int board[5][5], int size, int *score)
 {
 	int	i;
 	int	empty;
 	int	full;
 	int	ret;
 
-	ret = merge_down(board, size);
+	ret = merge_down(board, size, score);
 	i = 0;
 	while (i < size)
 	{

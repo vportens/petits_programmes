@@ -6,14 +6,14 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:21:35 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/03/19 18:56:45 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/03/19 20:38:36 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 #include <ncurses.h>
 
-int	play_round(int board[5][5], int size)
+int	play_round(int board[5][5], int size, int *score)
 {
 	int	c;
 
@@ -26,22 +26,22 @@ int	play_round(int board[5][5], int size)
 		switch (c)
 		{
 			case KEY_UP:
-				if (move_up(board, size))
+				if (move_up(board, size, score))
 					break ;
 				else
 					return (0);
 			case KEY_DOWN:
-				if (move_down(board, size))
+				if (move_down(board, size, score))
 					break ;
 				else
 					return (0);
 			case KEY_LEFT:
-				if (move_left(board, size))
+				if (move_left(board, size, score))
 					break ;
 				else
 					return (0);
 			case KEY_RIGHT:
-				if (move_right(board, size))
+				if (move_right(board, size, score))
 					break ;
 				else
 					return (0);
