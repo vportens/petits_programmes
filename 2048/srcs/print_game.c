@@ -35,7 +35,7 @@ void	print_game(int map[4][4], int size)
 			nbr = ft_itoa(map[i][j]);
 			if (nbr == NULL)
 				return ;
-			printf("nbr: %s\n", nbr);
+			attron(A_BOLD | A_UNDERLINE);
 			move(len_halfcase_x + len_case_x * i, len_halfcase_y + len_case_y * j);
 			printw(nbr, (len_halfcase_x + len_case_x * i) * 2, (len_halfcase_y + len_case_y * j) * 2);
 			
@@ -51,12 +51,21 @@ void	print_game(int map[4][4], int size)
 int main()
 {
 	int size = 4;
-	int map[4][4] = {{1,2,3,4}, {5,6,7,8}, {11,22,33,44}, {999,888,777,555}};
+	int map[4][4] = {{1,2,3,4}, {5,6,7,8}, {12,23,34,45}, {999,888,777,555}};
 	
+
+
 	initscr();
+
+	start_color();	
+	init_pair(1, COLOR_RED, COLOR_BLACK);
+	attron(COLOR_PAIR(1));
 	print_game(map, size);
+	attroff(COLOR_PAIR(1));
 	refresh();
 	getch();
 	endwin();
+
+
 	return (0);
 }
