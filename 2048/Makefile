@@ -11,7 +11,6 @@ SRCS =  print_game.c				\
 	printMap.c				\
 	ft_itao.c	\
 	print_num_ascii_art.c \
-	ft_itao.c \
 	merge.c \
 	move.c \
 	play_round.c \

@@ -66,8 +66,7 @@ void	print_game(int map[5][5], int size)
 int main()
 {
 	int size = 4;
-	int map[4][4] = {{1,2,3,4}, {5,6,7,8}, {12,23,34,45}, {999,888,777,555}};
-	char c;	
+	int	score;
 
 
 	initscr();
@@ -80,19 +79,7 @@ int main()
 	attron(COLOR_PAIR(1));
 	score = play_game(size);
 	attroff(COLOR_PAIR(1));
-	refresh();
-	while (1)
-	{
-		c = getch();
-		print_game(map, size);
-		refresh();
-		if (c == 'q')
-			break;
-
-	}
 	endwin();
-
-
-
+	printf("Your score is %d\n", score);
 	return (0);
 }

@@ -8,7 +8,7 @@ enum e_const
 
 char	*ft_itoa(int nbr);
 void	print_map(int size);
-void	print_ascii_num(int size, int map[4][4]);
+void	print_ascii_num(int size, int map[5][5]);
 void	print_game(int map[5][5], int size);
 int		merge_left(int board[5][5], int size);
 int		merge_right(int board[5][5], int size);

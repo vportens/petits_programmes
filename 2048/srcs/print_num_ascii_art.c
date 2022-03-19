@@ -323,7 +323,7 @@ void print_nbr(char nbr, int centre_x, int centre_y)
 }
 
 
-void	print_ascii_num(int size, int map[4][4])
+void	print_ascii_num(int size, int map[5][5])
 {
 	int len_case_y;		
 	int len_case_x;		
