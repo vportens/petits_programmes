@@ -322,6 +322,7 @@ void print_nbr(char nbr, int centre_x, int centre_y)
 
 }
 
+
 void	print_ascii_num(int size, int map[4][4])
 {
 	int len_case_y;		
@@ -346,6 +347,12 @@ void	print_ascii_num(int size, int map[4][4])
 		j = 0;
 		while (j < size)
 		{
+			start_color();	
+			if (map[i][j] < 16)
+				init_pair(1, COLOR_RED, COLOR_BLUE);
+			else if (map[i][j] < 128)
+				init_pair(1, COLOR_MAGENTA, COLOR_BLUE);
+			attron(COLOR_PAIR(1));
 			nbr = ft_itoa(map[i][j]);
 			len_nbr = ft_strlen(nbr);
 			n = 0;
@@ -354,6 +361,8 @@ void	print_ascii_num(int size, int map[4][4])
 				print_nbr(nbr[n], len_halfcase_x + len_case_x * i, (len_halfcase_y + len_case_y * j) + ((-len_nbr /2 + n) * 5));
 				n++;
 			}
+			
+			attroff(COLOR_PAIR(1));
 			j++;
 
 		}
