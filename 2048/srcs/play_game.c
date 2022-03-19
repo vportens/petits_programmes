@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:04:59 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/03/19 18:59:57 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/03/19 20:43:06 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,22 +62,23 @@ int	play_game(int size)
 {
 	int	board[5][5] = {{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}};
 	int	score;
+	int	max_tile;
 
+	score = 0;
 	add_number(board, size);
 	while (1)
 	{
 		add_number(board, size);
-		score = get_max(board, size);
-		if (play_round(board, size))
-			break ;
 		if (is_game_over(board, size))
 			break ;
-		if (score < WIN_VALUE && get_max(board, size) >= WIN_VALUE)
+		max_tile = get_max(board, size);
+		if (play_round(board, size, &score))
+			break ;
+		if (max_tile < WIN_VALUE && get_max(board, size) >= WIN_VALUE)
 		{
 			if (player_continues() == 0)
 				break ;
 		}
 	}
-	score = get_max(board, size);
 	return (score);
 }
