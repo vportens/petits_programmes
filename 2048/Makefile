@@ -22,6 +22,7 @@ SRCS =  print_game.c				\
 	gnl.c \
 	main.c
 
+HEADER = incs/game.h
 
 OBJ_DIR	=	./objs
 
@@ -36,7 +37,7 @@ $(NAME): $(OBJS)
 	
 	
 
-$(OBJ_DIR)/%.o : %.c | $(OBJ_DIR)
+$(OBJ_DIR)/%.o : %.c $(OBJ_DIR) $(HEADER)
 	$(CC) $(CFLAGS) -o $@ -c $<  -I incs
 
 $(OBJ_DIR) :
@@ -48,8 +49,10 @@ clean :
 fclean : clean
 		rm -rf $(NAME)
 
-relinux : fclean LINUX
+##relinux : fclean LINUX
 
 re : fclean all
+
+.PHONY : all clean fclean re
 
 ##rebonus : fclean bonus
