@@ -116,23 +116,9 @@ int	add_score_to_file(int size, int score, char *pseudo, char *file_name)
 	i = 0;
 	int bob = 0;
 	int ret_gnl;
-//	int q = 0;
-//	int c = 0;
 	while ((ret_gnl = get_next_line(fd, &line)) > 0)
 	{
-/*		if (line[0] != '4' && line[0] != '5')
-		{
-			free(line);
-		}
-		else 
-		{
-			if (line[0] == '4')
-				q++;
-			else
-				c++;
-			ret = ft_atoi(line);
-			if (ret < to_cmp && bob == 0)
-		}*/
+
 		ret = ft_atoi(line);
 		if (ret < to_cmp && i < 10 && bob == 0)
 		{
