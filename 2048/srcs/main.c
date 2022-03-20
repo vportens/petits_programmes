@@ -64,7 +64,10 @@ void	main_menu(void)
 				break ;
 			}
 			case '3':
-				return ;
+			{
+				score_page("score.txt");
+				break ;
+			}
 			case '4':
 				return ;
 			case 27:
