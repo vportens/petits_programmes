@@ -6,12 +6,13 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:04:59 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/03/19 20:43:06 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/03/20 11:42:31 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 #include <stdlib.h>
+#include <time.h>
 #include <ncurses.h>
 
 static int	get_max(int board[5][5], int size)
@@ -65,6 +66,7 @@ int	play_game(int size)
 	int	max_tile;
 
 	score = 0;
+	srand(time(NULL));
 	add_number(board, size);
 	while (1)
 	{

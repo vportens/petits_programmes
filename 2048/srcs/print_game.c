@@ -62,25 +62,3 @@ void	print_game(int map[5][5], int size)
 	else
 		print_ascii_num(size, map);
 }
-
-int main()
-{
-
-	int size = 5;
-	int	score;
-
-
-	initscr();
-	keypad(stdscr, TRUE);
-	cbreak();
-	noecho();
-	curs_set(0);
-	start_color();
-	init_pair(1, COLOR_RED, COLOR_BLACK);
-	attron(COLOR_PAIR(1));
-	score = play_game(size);
-	attroff(COLOR_PAIR(1));
-	endwin();
-	printf("Your score is %d\n", score);
-	return (0);
-}

@@ -18,7 +18,8 @@ SRCS =  print_game.c				\
 	add_tile.c \
 	game_over.c	\
 	score_page.c	\
-	gnl.c
+	gnl.c \
+	main.c
 
 
 OBJ_DIR	=	./objs
