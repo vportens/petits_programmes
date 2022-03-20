@@ -35,7 +35,7 @@ void	print_game(int map[5][5], int size, int score)
 			{
 				if (attron(A_BOLD | A_UNDERLINE) == ERR
 					|| move(len_halfcase_x + (LINES-1) * i / size, len_halfcase_y + (COLS -1) * j / size) == ERR
-					|| printw("%i", map[i][j], (len_halfcase_x + (LINES-1) * i / size) * 2, (len_halfcase_y + (COLS -1) * j / size) * 2) == ERR
+					|| printw("%i", map[i][j]) == ERR
 					|| attroff(A_BOLD | A_UNDERLINE) == ERR)
 					exit_ncurses(1);
 		//	addch(map[i][j] + '0');
