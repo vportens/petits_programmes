@@ -3,7 +3,7 @@
 #include "game.h"
 
 
-int ft_strlen(char *nbr)
+int ft_strlen(const char *nbr)
 {
 	int i = 0;
 	while (nbr[i])

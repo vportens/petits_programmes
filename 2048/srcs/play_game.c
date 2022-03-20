@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   play_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: viporten <viporten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:04:59 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/03/20 18:04:20 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/03/20 19:25:11 by viporten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,8 @@ int	play_game(int size, char *name)
 			return (score);
 		add_number(board, size);
 		if (is_game_over(board, size))
-			return (game_over_screen(score, name));
+			break ;
+	//		return (game_over_screen(score, name));
 	}
 	return (score);
 }

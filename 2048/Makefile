@@ -20,9 +20,16 @@ SRCS =  print_game.c				\
 	end_screen.c \
 	score_page.c	\
 	gnl.c \
+	strdup.c	\
+	strcat.c	\
+	strjoin.c	\
+	str_new.c	\
+	strcpy.c	\
+	atoi.c	\
 	main.c
 
 HEADER = incs/game.h
+
 
 OBJ_DIR	=	./objs
 
