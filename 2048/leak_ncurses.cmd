@@ -10,3 +10,9 @@
 	...
 	fun:wrefresh
 }
+{
+	leak ncurses
+	Memcheck:Leak 
+	...
+	fun:printw
+}

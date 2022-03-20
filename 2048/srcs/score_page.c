@@ -237,7 +237,8 @@ int	score_page(char *file_name)
 	getch();
 		return (0); 
 	}
-	while (get_next_line(fd, &line))
+	int ret;
+	while ((ret = get_next_line(fd, &line)) > 0)
 	{
 		if (line[0] == '4')
 		{
@@ -271,6 +272,13 @@ int	score_page(char *file_name)
 		}
 		free(line);
 
+	}
+	if (ret < 0)
+	{
+	refresh();
+	getch();
+		close(fd);
+		return (1);
 	}
 		if (line[0] == '4')
 		{
