@@ -26,6 +26,8 @@ void	exit_ncurses(int code)
 
 static void display_main_menu(void)
 {
+	if (LINES < 5 || COLS < 26)
+		return ;
 	if (clear() == ERR
 		|| move(LINES / 2 - 2, COLS / 2 - 2) == ERR
 		|| addstr("2048") == ERR

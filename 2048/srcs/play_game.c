@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:04:59 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/03/20 17:33:13 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/03/20 18:04:20 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,19 @@ static int	player_continues(int score, char *name)
 	int	c;
 
 	(void) name;
-	if (clear() == ERR
-		|| move(LINES / 2 - 1, COLS / 2 - 13) == ERR
-		|| addstr("Congratulations you won !") == ERR
-		|| move(LINES / 2, COLS / 2 - 8) == ERR
-		|| printw("Score = %i", score) == ERR
-		|| move(LINES / 2 + 1, COLS / 2 - 15) == ERR
-		|| addstr("Do you wish to continue (y/n)") == ERR)
-		exit_ncurses(1);
 	while (1)
 	{
+		if (LINES > 2 && COLS > 30)
+		{
+			if (clear() == ERR
+				|| move(LINES / 2 - 1, COLS / 2 - 13) == ERR
+				|| addstr("Congratulations you won !") == ERR
+				|| move(LINES / 2, COLS / 2 - 8) == ERR
+				|| printw("Score = %i", score) == ERR
+				|| move(LINES / 2 + 1, COLS / 2 - 15) == ERR
+				|| addstr("Do you wish to continue (y/n)") == ERR)
+				exit_ncurses(1);
+		}
 		c = getch();
 		if (c == ERR)
 			exit_ncurses(1);

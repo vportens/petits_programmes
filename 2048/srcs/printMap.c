@@ -70,10 +70,10 @@ void	print_border()
 	}
 }
 
-void	print_score(int *score)
+void	print_score(int score)
 {
 	if (move(1, 1) == ERR
-		|| printw("your score is : %i", *score) == ERR)
+		|| printw("your score is : %i", score) == ERR)
 		exit_ncurses(1);
 
 }

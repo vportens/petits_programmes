@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:21:35 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/03/20 15:30:15 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/03/20 18:24:27 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int	play_round(int board[5][5], int size, int *score)
 
 	while (1)
 	{
-		print_game(board, size);
-		print_score(score);
+		print_game(board, size, *score);
 		if (refresh() == ERR)
 			exit_ncurses(1);
 		c = getch();
