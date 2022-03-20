@@ -16,8 +16,9 @@ void	print_line(int size)
 		point = (LINES - 1) * j / size;
 		while (i < COLS)
 		{
-			move(point, i);
-			addch('.');
+			if (move(point, i) == ERR
+				|| addch('.') == ERR)
+				exit_ncurses(1);
 			i++;
 		}
 		j++;
@@ -37,9 +38,9 @@ void	print_colonm(int size)
 		point = (COLS - 1) * i/size;	
 		while (j < LINES)
 		{
-			
-			move(j, point);
-			addch('.');
+			if (move(j, point) == ERR
+				|| addch('.') == ERR)
+				exit_ncurses(1);
 			j++;
 		}
 		i++;
@@ -57,9 +58,10 @@ void	print_border()
 		j = 0;
 		while (j < LINES)
 		{
-			if (i == 0 || j == 0 || i == COLS -1  || j == LINES - 1 )
+			if (i == 0 || j == 0 || i == COLS - 1  || j == LINES - 1)
 			{
-				move(j, i);
+				if (move(j, i) == ERR)
+					exit_ncurses(1);
 				addch('.');
 			}
 			j++;	
@@ -70,18 +72,16 @@ void	print_border()
 
 void	print_score(int *score)
 {
-		char *to_print;
-
-		to_print = ft_itoa(*score);
-		move(1, 1);
-		printw("your score is : ");
-		printw(to_print);
+	if (move(1, 1) == ERR
+		|| printw("your score is : %i", *score) == ERR)
+		exit_ncurses(1);
 
 }
 
 void	print_map(int size) {
 
-	clear();
+	if (clear() == ERR)
+		exit_ncurses(1);
 	print_border();
 	print_colonm(size);
 	print_line(size);

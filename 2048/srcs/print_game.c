@@ -24,8 +24,6 @@ void	print_game(int map[5][5], int size)
 	int i = 0;
 	int j = 0;
 
-	char *nbr;
-
 	if (COLS < 26 * size + 1|| LINES < 6 * size + 1)
 	{
 	while (i < size)
@@ -34,25 +32,17 @@ void	print_game(int map[5][5], int size)
 		j = 0;
 		while (j < size)
 		{
-			nbr = ft_itoa(map[i][j]);
-
-
-			if (nbr == NULL)
-				return ;
-			if (nbr[0] == '0')
-			{
-				free(nbr);
+			if (map[i][j] == 0)
 				j++;
-			}
 			else
 			{
-				attron(A_BOLD | A_UNDERLINE);
-				move(len_halfcase_x + len_case_x * i, len_halfcase_y + len_case_y * j);
-				printw(nbr, (len_halfcase_x + len_case_x * i) * 2, (len_halfcase_y + len_case_y * j) * 2);
-				attroff(A_BOLD | A_UNDERLINE);
+				if (attron(A_BOLD | A_UNDERLINE) == ERR
+					|| move(len_halfcase_x + len_case_x * i, len_halfcase_y + len_case_y * j) == ERR
+					|| printw("%i", map[i][j], (len_halfcase_x + len_case_x * i) * 2, (len_halfcase_y + len_case_y * j) * 2) == ERR
+					|| attroff(A_BOLD | A_UNDERLINE) == ERR)
+					exit_ncurses(1);
 		//	addch(map[i][j] + '0');
 				j++;
-				free(nbr);
 			}
 		}
 		i++;

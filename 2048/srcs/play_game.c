@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:04:59 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/03/20 11:42:31 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/03/20 16:09:30 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,17 @@ static int	player_continues(void)
 {
 	int	c;
 
-	clear();
-	move(LINES / 2, COLS / 2 - 13);
-	addstr("Congratulations you won !");
-	move(LINES / 2 + 1, COLS / 2 - 15);
-	addstr("Do you wish to continue (y/n)");
+	if (clear() == ERR
+		|| move(LINES / 2, COLS / 2 - 13) == ERR
+		|| addstr("Congratulations you won !") == ERR
+		|| move(LINES / 2 + 1, COLS / 2 - 15) == ERR
+		|| addstr("Do you wish to continue (y/n)") == ERR)
+		exit_ncurses(1);
 	while (1)
 	{
 		c = getch();
+		if (c == ERR)
+			exit_ncurses(1);
 		switch (c)
 		{
 		case 'y':
@@ -59,6 +62,24 @@ static int	player_continues(void)
 	}
 }
 
+static int	win_value()
+{
+	int	win_value;
+	
+	win_value = WIN_VALUE;
+	if (win_value <= 0)
+		return (0);
+	while (win_value)
+	{
+		if (win_value % 2)
+			return (0);
+		if (win_value == 2)
+			return (WIN_VALUE);
+		win_value /= 2;
+	}
+	return (WIN_VALUE);
+}
+
 int	play_game(int size)
 {
 	int	board[5][5] = {{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}};
@@ -66,21 +87,23 @@ int	play_game(int size)
 	int	max_tile;
 
 	score = 0;
+	max_tile = 0;
 	srand(time(NULL));
+	add_number(board, size);
 	add_number(board, size);
 	while (1)
 	{
-		add_number(board, size);
-		if (is_game_over(board, size))
-			break ;
-		max_tile = get_max(board, size);
 		if (play_round(board, size, &score))
-			break ;
-		if (max_tile < WIN_VALUE && get_max(board, size) >= WIN_VALUE)
+			return (score);
+		if (max_tile < win_value() && get_max(board, size) >= win_value())
 		{
 			if (player_continues() == 0)
 				break ;
 		}
+		add_number(board, size);
+		if (is_game_over(board, size))
+			break ;
+		max_tile = get_max(board, size);
 	}
 	return (score);
 }

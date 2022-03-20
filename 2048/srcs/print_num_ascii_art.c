@@ -21,39 +21,40 @@ int ft_strlen(char *nbr)
 
 void	print_zero(int centre_x, int centre_y)
 {
-		move(centre_x -2, centre_y - 1);
-		addch('0');
-		move(centre_x -2, centre_y);
-		addch('0');
-		move(centre_x -2, centre_y + 1);
-		addch('0');
+	if (move(centre_x -2, centre_y - 1) == ERR
+		|| addch('0') == ERR
+		|| move(centre_x -2, centre_y) == ERR
+		|| addch('0') == ERR
+		|| move(centre_x -2, centre_y + 1) == ERR
+		|| addch('0') == ERR
 
 
-		move(centre_x -1, centre_y - 1);
-		addch('0');
-		move(centre_x -1, centre_y + 1);
-		addch('0');
+		|| move(centre_x -1, centre_y - 1) == ERR
+		|| addch('0') == ERR
+		|| move(centre_x -1, centre_y + 1) == ERR
+		|| addch('0') == ERR
+
+		|| move(centre_x , centre_y - 1) == ERR
+		|| addch('0') == ERR
+		|| move(centre_x , centre_y + 1) == ERR
+		|| addch('0') == ERR
 		
-		move(centre_x , centre_y - 1);
-		addch('0');
-		move(centre_x , centre_y + 1);
-		addch('0');
-
-		move(centre_x + 1 , centre_y - 1);
-		addch('0');
-		move(centre_x + 1, centre_y + 1);
-		addch('0');
+		|| move(centre_x + 1 , centre_y - 1) == ERR
+		|| addch('0') == ERR
+		|| move(centre_x + 1, centre_y + 1) == ERR
+		|| addch('0') == ERR
+		
 
 
 
 
-
-		move(centre_x +2, centre_y - 1);
-		addch('0');
-		move(centre_x +2, centre_y);
-		addch('0');
-		move(centre_x +2, centre_y + 1);
-		addch('0');
+		|| move(centre_x +2, centre_y - 1) == ERR
+		|| addch('0') == ERR
+		|| move(centre_x +2, centre_y) == ERR
+		|| addch('0') == ERR
+		|| move(centre_x +2, centre_y + 1) == ERR
+		|| addch('0') == ERR)
+		exit_ncurses(1);
 }
 
 /*
@@ -65,26 +66,27 @@ void	print_zero(int centre_x, int centre_y)
 */
 void	print_nine(int centre_x, int centre_y)
 {
-		move(centre_x -2, centre_y - 1);
-		addch('9');
-		move(centre_x -2, centre_y);
-		addch('9');
-		move(centre_x -2, centre_y + 1);
-		addch('9');
-		move(centre_x -1, centre_y - 1);
-		addch('9');
-		move(centre_x -1, centre_y + 1);
-		addch('9');
-		move(centre_x , centre_y - 1);
-		addch('9');
-		move(centre_x , centre_y);
-		addch('9');
-		move(centre_x , centre_y + 1);
-		addch('9');
-		move(centre_x + 1, centre_y + 1);
-		addch('9');
-		move(centre_x + 2, centre_y + 1);
-		addch('9');
+	if (move(centre_x -2, centre_y - 1) == ERR
+		|| addch('9') == ERR
+		|| move(centre_x -2, centre_y) == ERR
+		|| addch('9') == ERR
+		|| move(centre_x -2, centre_y + 1) == ERR
+		|| addch('9') == ERR
+		|| move(centre_x -1, centre_y - 1) == ERR
+		|| addch('9') == ERR
+		|| move(centre_x -1, centre_y + 1) == ERR
+		|| addch('9') == ERR
+		|| move(centre_x , centre_y - 1) == ERR
+		|| addch('9') == ERR
+		|| move(centre_x , centre_y) == ERR
+		|| addch('9') == ERR
+		|| move(centre_x , centre_y + 1) == ERR
+		|| addch('9') == ERR
+		|| move(centre_x + 1, centre_y + 1) == ERR
+		|| addch('9') == ERR
+		|| move(centre_x + 2, centre_y + 1) == ERR
+		|| addch('9') == ERR)
+		exit_ncurses(1);
 
 }
 
@@ -98,34 +100,33 @@ void	print_nine(int centre_x, int centre_y)
 
 void	print_height(int centre_x, int centre_y)
 {
-		move(centre_x -2, centre_y - 1);
-		addch('8');
-		move(centre_x -2, centre_y);
-		addch('8');
-		move(centre_x -2, centre_y + 1);
-		addch('8');
-		move(centre_x -1, centre_y - 1);
-		addch('8');
-		move(centre_x -1, centre_y + 1);
-		addch('8');
-		move(centre_x, centre_y - 1);
-		addch('8');
-		move(centre_x , centre_y);
-		addch('8');
-		move(centre_x , centre_y + 1);
-		addch('8');
-		move(centre_x +1, centre_y - 1);
-		addch('8');
-		move(centre_x +1, centre_y + 1);
-		addch('8');
-		move(centre_x +2, centre_y - 1);
-		addch('8');
-		move(centre_x +2, centre_y);
-		addch('8');
-		move(centre_x +2, centre_y + 1);
-		addch('8');
-	
-
+	if (move(centre_x -2, centre_y - 1) == ERR
+		|| addch('8') == ERR
+		|| move(centre_x -2, centre_y) == ERR
+		|| addch('8') == ERR
+		|| move(centre_x -2, centre_y + 1) == ERR
+		|| addch('8') == ERR
+		|| move(centre_x -1, centre_y - 1) == ERR
+		|| addch('8') == ERR
+		|| move(centre_x -1, centre_y + 1) == ERR
+		|| addch('8') == ERR
+		|| move(centre_x, centre_y - 1) == ERR
+		|| addch('8') == ERR
+		|| move(centre_x , centre_y) == ERR
+		|| addch('8') == ERR
+		|| move(centre_x , centre_y + 1) == ERR
+		|| addch('8') == ERR
+		|| move(centre_x +1, centre_y - 1) == ERR
+		|| addch('8') == ERR
+		|| move(centre_x +1, centre_y + 1) == ERR
+		|| addch('8') == ERR
+		|| move(centre_x +2, centre_y - 1) == ERR
+		|| addch('8') == ERR
+		|| move(centre_x +2, centre_y) == ERR
+		|| addch('8') == ERR
+		|| move(centre_x +2, centre_y + 1) == ERR
+		|| addch('8') == ERR)
+		exit_ncurses(1);
 }
 
 /*
@@ -138,20 +139,21 @@ void	print_height(int centre_x, int centre_y)
 
 void	print_seven(int centre_x, int centre_y)
 {
-		move(centre_x -2, centre_y - 1);
-		addch('7');
-		move(centre_x - 2, centre_y);
-		addch('7');
-		move(centre_x - 2, centre_y + 1);
-		addch('7');
-		move(centre_x -1, centre_y + 1);
-		addch('7');
-		move(centre_x , centre_y + 1);
-		addch('7');
-		move(centre_x + 1, centre_y + 1);
-		addch('7');
-		move(centre_x + 2, centre_y + 1);
-		addch('7');
+	if (move(centre_x -2, centre_y - 1) == ERR
+		|| addch('7') == ERR
+		|| move(centre_x - 2, centre_y) == ERR
+		|| addch('7') == ERR
+		|| move(centre_x - 2, centre_y + 1) == ERR
+		|| addch('7') == ERR
+		|| move(centre_x -1, centre_y + 1) == ERR
+		|| addch('7') == ERR
+		|| move(centre_x , centre_y + 1) == ERR
+		|| addch('7') == ERR
+		|| move(centre_x + 1, centre_y + 1) == ERR
+		|| addch('7') == ERR
+		|| move(centre_x + 2, centre_y + 1) == ERR
+		|| addch('7') == ERR)
+		exit_ncurses(1);
 
 }
 
@@ -165,27 +167,27 @@ void	print_seven(int centre_x, int centre_y)
 
 void	print_six(int centre_x, int centre_y)
 {
-		move(centre_x -2, centre_y - 1);
-		addch('6');
-		move(centre_x -1, centre_y - 1);
-		addch('6');
-		move(centre_x , centre_y - 1);
-		addch('6');
-		move(centre_x , centre_y);
-		addch('6');
-		move(centre_x , centre_y + 1);
-		addch('6');
-		move(centre_x + 1, centre_y - 1);
-		addch('6');
-		move(centre_x + 1, centre_y + 1);
-		addch('6');
-		move(centre_x + 2, centre_y - 1);
-		addch('6');
-		move(centre_x + 2, centre_y);
-		addch('6');
-		move(centre_x + 2, centre_y + 1);
-		addch('6');
-
+	if (move(centre_x -2, centre_y - 1) == ERR
+		|| addch('6') == ERR
+		|| move(centre_x -1, centre_y - 1) == ERR
+		|| addch('6') == ERR
+		|| move(centre_x , centre_y - 1) == ERR
+		|| addch('6') == ERR
+		|| move(centre_x , centre_y) == ERR
+		|| addch('6') == ERR
+		|| move(centre_x , centre_y + 1) == ERR
+		|| addch('6') == ERR
+		|| move(centre_x + 1, centre_y - 1) == ERR
+		|| addch('6') == ERR
+		|| move(centre_x + 1, centre_y + 1) == ERR
+		|| addch('6') == ERR
+		|| move(centre_x + 2, centre_y - 1) == ERR
+		|| addch('6') == ERR
+		|| move(centre_x + 2, centre_y) == ERR
+		|| addch('6') == ERR
+		|| move(centre_x + 2, centre_y + 1) == ERR
+		|| addch('6') == ERR)
+		exit_ncurses(1);
 }
 
 /*
@@ -198,29 +200,29 @@ void	print_six(int centre_x, int centre_y)
 
 void	print_five(int centre_x, int centre_y)
 {
-		move(centre_x - 2, centre_y - 1);
-		addch('5');
-		move(centre_x - 2, centre_y);
-		addch('5');
-		move(centre_x -2, centre_y + 1);
-		addch('5');
-		move(centre_x -1, centre_y - 1);
-		addch('5');
-		move(centre_x , centre_y - 1);
-		addch('5');
-		move(centre_x , centre_y);
-		addch('5');
-		move(centre_x , centre_y + 1);
-		addch('5');
-		move(centre_x + 1, centre_y +1);
-		addch('5');
-		move(centre_x + 2, centre_y - 1);
-		addch('5');
-		move(centre_x + 2, centre_y);
-		addch('5');
-		move(centre_x +2, centre_y + 1);
-		addch('5');
-
+	if (move(centre_x - 2, centre_y - 1) == ERR
+		|| addch('5') == ERR
+		|| move(centre_x - 2, centre_y) == ERR
+		|| addch('5') == ERR
+		|| move(centre_x -2, centre_y + 1) == ERR
+		|| addch('5') == ERR
+		|| move(centre_x -1, centre_y - 1) == ERR
+		|| addch('5') == ERR
+		|| move(centre_x , centre_y - 1) == ERR
+		|| addch('5') == ERR
+		|| move(centre_x , centre_y) == ERR
+		|| addch('5') == ERR
+		|| move(centre_x , centre_y + 1) == ERR
+		|| addch('5') == ERR
+		|| move(centre_x + 1, centre_y +1) == ERR
+		|| addch('5') == ERR
+		|| move(centre_x + 2, centre_y - 1) == ERR
+		|| addch('5') == ERR
+		|| move(centre_x + 2, centre_y) == ERR
+		|| addch('5') == ERR
+		|| move(centre_x +2, centre_y + 1) == ERR
+		|| addch('5') == ERR)
+		exit_ncurses(1);
 }
 
 /*
@@ -232,26 +234,25 @@ void	print_five(int centre_x, int centre_y)
 */
 void	print_four(int centre_x, int centre_y)
 {
-		move(centre_x -2, centre_y - 1);
-		addch('4');
-		move(centre_x -2, centre_y + 1);
-		addch('4');
-		move(centre_x -1, centre_y - 1);
-		addch('4');
-		move(centre_x -1, centre_y + 1);
-		addch('4');
-		move(centre_x , centre_y - 1);
-		addch('4');
-		move(centre_x , centre_y);
-		addch('4');
-		move(centre_x , centre_y + 1);
-		addch('4');
-		move(centre_x + 1, centre_y + 1);
-		addch('4');
-		move(centre_x + 2, centre_y + 1);
-		addch('4');
-
-
+	if (move(centre_x -2, centre_y - 1) == ERR
+		|| addch('4') == ERR
+		|| move(centre_x -2, centre_y + 1) == ERR
+		|| addch('4') == ERR
+		|| move(centre_x -1, centre_y - 1) == ERR
+		|| addch('4') == ERR
+		|| move(centre_x -1, centre_y + 1) == ERR
+		|| addch('4') == ERR
+		|| move(centre_x , centre_y - 1) == ERR
+		|| addch('4') == ERR
+		|| move(centre_x , centre_y) == ERR
+		|| addch('4') == ERR
+		|| move(centre_x , centre_y + 1) == ERR
+		|| addch('4') == ERR
+		|| move(centre_x + 1, centre_y + 1) == ERR
+		|| addch('4') == ERR
+		|| move(centre_x + 2, centre_y + 1) == ERR
+		|| addch('4') == ERR)
+		exit_ncurses(1);
 }
 
 /*
@@ -264,26 +265,27 @@ void	print_four(int centre_x, int centre_y)
 
 void	print_three(int centre_x, int centre_y)
 {
-		move(centre_x - 2, centre_y - 1);
-		addch('3');
-		move(centre_x - 2, centre_y);
-		addch('3');
-		move(centre_x - 2, centre_y + 1);
-		addch('3');
-		move(centre_x -1, centre_y + 1);
-		addch('3');
-		move(centre_x , centre_y);
-		addch('3');
-		move(centre_x , centre_y + 1);
-		addch('3');
-		move(centre_x + 1, centre_y + 1);
-		addch('3');
-		move(centre_x + 2, centre_y - 1);
-		addch('3');
-		move(centre_x + 2, centre_y);
-		addch('3');
-		move(centre_x + 2, centre_y + 1);
-		addch('3');
+	if (move(centre_x - 2, centre_y - 1) == ERR
+		|| addch('3') == ERR
+		|| move(centre_x - 2, centre_y) == ERR
+		|| addch('3') == ERR
+		|| move(centre_x - 2, centre_y + 1) == ERR
+		|| addch('3') == ERR
+		|| move(centre_x -1, centre_y + 1) == ERR
+		|| addch('3') == ERR
+		|| move(centre_x , centre_y) == ERR
+		|| addch('3') == ERR
+		|| move(centre_x , centre_y + 1) == ERR
+		|| addch('3') == ERR
+		|| move(centre_x + 1, centre_y + 1) == ERR
+		|| addch('3') == ERR
+		|| move(centre_x + 2, centre_y - 1) == ERR
+		|| addch('3') == ERR
+		|| move(centre_x + 2, centre_y) == ERR
+		|| addch('3') == ERR
+		|| move(centre_x + 2, centre_y + 1) == ERR
+		|| addch('3') == ERR)
+		exit_ncurses(1);
 	
 }
 
@@ -297,28 +299,29 @@ void	print_three(int centre_x, int centre_y)
 
 void	print_two(int centre_x, int centre_y)
 {
-		move(centre_x -2 , centre_y - 1);
-		addch('2');
-		move(centre_x -2, centre_y);
-		addch('2');
-		move(centre_x -2, centre_y + 1);
-		addch('2');
-		move(centre_x -1, centre_y + 1);
-		addch('2');
-		move(centre_x , centre_y - 1);
-		addch('2');
-		move(centre_x , centre_y);
-		addch('2');
-		move(centre_x , centre_y + 1);
-		addch('2');
-		move(centre_x + 1, centre_y - 1);
-		addch('2');
-		move(centre_x +2 , centre_y - 1);
-		addch('2');
-		move(centre_x +2, centre_y);
-		addch('2');
-		move(centre_x +2, centre_y + 1);
-		addch('2');
+	if (move(centre_x -2 , centre_y - 1) == ERR
+		|| addch('2') == ERR
+		|| move(centre_x -2, centre_y) == ERR
+		|| addch('2') == ERR
+		|| move(centre_x -2, centre_y + 1) == ERR
+		|| addch('2') == ERR
+		|| move(centre_x -1, centre_y + 1) == ERR
+		|| addch('2') == ERR
+		|| move(centre_x , centre_y - 1) == ERR
+		|| addch('2') == ERR
+		|| move(centre_x , centre_y) == ERR
+		|| addch('2') == ERR
+		|| move(centre_x , centre_y + 1) == ERR
+		|| addch('2') == ERR
+		|| move(centre_x + 1, centre_y - 1) == ERR
+		|| addch('2') == ERR
+		|| move(centre_x +2 , centre_y - 1) == ERR
+		|| addch('2') == ERR
+		|| move(centre_x +2, centre_y) == ERR
+		|| addch('2') == ERR
+		|| move(centre_x +2, centre_y + 1) == ERR
+		|| addch('2') == ERR)
+		exit_ncurses(1);
 }
 
 /*
@@ -331,16 +334,17 @@ void	print_two(int centre_x, int centre_y)
 
 void	print_one(int centre_x, int centre_y)
 {
-		move(centre_x -2, centre_y);
-		addch('1');
-		move(centre_x -1, centre_y);
-		addch('1');
-		move(centre_x , centre_y);
-		addch('1');
-		move(centre_x +1, centre_y);
-		addch('1');
-		move(centre_x +2, centre_y);
-		addch('1');
+	if (move(centre_x -2, centre_y) == ERR
+		|| addch('1') == ERR
+		|| move(centre_x -1, centre_y) == ERR
+		|| addch('1') == ERR
+		|| move(centre_x , centre_y) == ERR
+		|| addch('1') == ERR
+		|| move(centre_x +1, centre_y) == ERR
+		|| addch('1') == ERR
+		|| move(centre_x +2, centre_y) == ERR
+		|| addch('1') == ERR)
+		exit_ncurses(1);
 
 }
 
@@ -388,6 +392,7 @@ void	print_ascii_num(int size, int map[5][5])
 	int len_nbr;
 	int n = 0;
 	char *nbr;
+	int	ncurs_ret;
 
 	while (i < size)
 	{
@@ -398,58 +403,49 @@ void	print_ascii_num(int size, int map[5][5])
 				j++;
 			else
 			{
-			start_color();	
-			if (map[i][j] < 16)
-			{
-				init_pair(1, COLOR_RED, COLOR_BLUE);
-				attron(COLOR_PAIR(1));
-			}
-			else if (map[i][j] < 128)
-			{
-				init_pair(2, COLOR_MAGENTA, COLOR_BLUE);
-				attron(COLOR_PAIR(2));
-			}
-			else if (map[i][j] < 256)
-			{
-				init_pair(3, COLOR_YELLOW, COLOR_CYAN);
-				attron(COLOR_PAIR(3));
-			}
-			else if (map[i][j] < 512)
-			{
-				init_pair(4, COLOR_YELLOW, COLOR_CYAN);
-				attron(COLOR_PAIR(4));
-			}
-			else
-			{
-				init_pair(5, COLOR_YELLOW, COLOR_YELLOW);
-				attron(COLOR_PAIR(5));
-			}
-			nbr = ft_itoa(map[i][j]);
-			len_nbr = ft_strlen(nbr);
-			n = 0;
-			while (n < len_nbr)
-			{
-				print_nbr(nbr[n], len_halfcase_x + len_case_x * i, (len_halfcase_y + len_case_y * j) + ((-len_nbr /2 + n) * 5));
-				n++;
-			}
+				ncurs_ret = 0;
+				if (map[i][j] < 16)
+					ncurs_ret = attron(COLOR_PAIR(1));
+				else if (map[i][j] < 128)
+					ncurs_ret = attron(COLOR_PAIR(2));
+				else if (map[i][j] < 256)
+					ncurs_ret = attron(COLOR_PAIR(3));
+				else if (map[i][j] < 512)
+					ncurs_ret = attron(COLOR_PAIR(4));
+				else
+					ncurs_ret = attron(COLOR_PAIR(5));
+				if (ncurs_ret == ERR)
+					exit_ncurses(1);
+				nbr = ft_itoa(map[i][j]);
+				if (!nbr)
+					exit_ncurses(2);
+				len_nbr = ft_strlen(nbr);
+				n = 0;
+				while (n < len_nbr)
+				{
+					print_nbr(nbr[n], len_halfcase_x + len_case_x * i, (len_halfcase_y + len_case_y * j) + ((-len_nbr /2 + n) * 5));
+					n++;
+				}
+				free(nbr);
+				ncurs_ret = 0;
+				if (map[i][j] < 16)
+					ncurs_ret = attroff(COLOR_PAIR(1));
+				else if (map[i][j] < 128)
+					ncurs_ret = attroff(COLOR_PAIR(2));
 
-			if (map[i][j] < 16)	
-			attroff(COLOR_PAIR(1));
-			else if (map[i][j] < 128)
-			attroff(COLOR_PAIR(2));
-
-			else if (map[i][j] < 256)
-			attroff(COLOR_PAIR(3));
-			else if (map[i][j] < 512)
-			attroff(COLOR_PAIR(4));
-			else 
-			attroff(COLOR_PAIR(5));
-			refresh();
-			j++;
+				else if (map[i][j] < 256)
+					ncurs_ret = attroff(COLOR_PAIR(3));
+				else if (map[i][j] < 512)
+					ncurs_ret = attroff(COLOR_PAIR(4));
+				else
+					ncurs_ret = attroff(COLOR_PAIR(5));
+				if (ncurs_ret == ERR)
+					exit_ncurses(1);
+				if (refresh() == ERR)
+					exit_ncurses(1);
+				j++;
 			}
-
 		}
 		i++;
-
 	}
 }
