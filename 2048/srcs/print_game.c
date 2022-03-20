@@ -10,7 +10,6 @@ void	print_game(int map[5][5], int size, int score)
 {
 	if (LINES < 11 || COLS < 50)
 		return ;
-	print_score(score);
 	print_map(size);
 	
 	int len_halfcase_y;
@@ -49,4 +48,5 @@ void	print_game(int map[5][5], int size, int score)
 	}
 	else
 		print_ascii_num(size, map);
+	print_score(score);
 }
