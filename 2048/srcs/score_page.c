@@ -79,6 +79,7 @@ int	creat_fill_score(char *line, char *file_name)
 	}
 	write(fd_new, line, ft_strlen(line));
 	free(line);
+	close(fd_new);
 	return (0);
 
 }
@@ -133,7 +134,11 @@ int	add_score_to_file(int size, int score, char *pseudo, char *file_name)
 		i++;
 	}
 	if (ret_gnl < 0)
+	{
+		free(tab);
+		close(fd);
 		return (0);
+	}
 	ret = ft_atoi(line);
 	if (ret < to_cmp && i < 10 && bob == 0)
 	{
@@ -193,7 +198,10 @@ int is_high_score(int size, int score, char *pseudo, char *file_name)
 		i++;
 	}
 	if (ret < 0)
+	{
+		close(fd);
 		return (0);
+	}
 	score_file = ft_atoi(line + 1);
 	if (score > score_file)
 	{
