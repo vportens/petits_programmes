@@ -376,16 +376,12 @@ void print_nbr(char nbr, int centre_x, int centre_y)
 
 void	print_ascii_num(int size, int map[5][5])
 {
-	int len_case_y;		
-	int len_case_x;		
 	int len_halfcase_y;
 	int len_halfcase_x;
 
-	len_case_y = (COLS -1) / size;
-	len_halfcase_y = len_case_y / 2;
+	len_halfcase_y = (COLS -1) / size / 2;
 
-	len_case_x = (LINES-1) / size;
-	len_halfcase_x = len_case_x / 2;
+	len_halfcase_x = (LINES-1) / size / 2;
 
 	int i = 0;
 	int j = 0;
@@ -423,7 +419,7 @@ void	print_ascii_num(int size, int map[5][5])
 				n = 0;
 				while (n < len_nbr)
 				{
-					print_nbr(nbr[n], len_halfcase_x + len_case_x * i, (len_halfcase_y + len_case_y * j) + ((-len_nbr /2 + n) * 5));
+					print_nbr(nbr[n], len_halfcase_x + (LINES-1) * i / size, (len_halfcase_y + (COLS -1) * j / size) + ((-len_nbr /2 + n) * 5));
 					n++;
 				}
 				free(nbr);
