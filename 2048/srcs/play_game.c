@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:04:59 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/03/20 16:09:30 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/03/20 17:33:13 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,16 @@ static int	get_max(int board[5][5], int size)
 	return (max);
 }
 
-static int	player_continues(void)
+static int	player_continues(int score, char *name)
 {
 	int	c;
 
+	(void) name;
 	if (clear() == ERR
-		|| move(LINES / 2, COLS / 2 - 13) == ERR
+		|| move(LINES / 2 - 1, COLS / 2 - 13) == ERR
 		|| addstr("Congratulations you won !") == ERR
+		|| move(LINES / 2, COLS / 2 - 8) == ERR
+		|| printw("Score = %i", score) == ERR
 		|| move(LINES / 2 + 1, COLS / 2 - 15) == ERR
 		|| addstr("Do you wish to continue (y/n)") == ERR)
 		exit_ncurses(1);
@@ -69,6 +72,8 @@ static int	win_value()
 	win_value = WIN_VALUE;
 	if (win_value <= 0)
 		return (0);
+	if (win_value == 1)
+		return (WIN_VALUE);
 	while (win_value)
 	{
 		if (win_value % 2)
@@ -80,7 +85,7 @@ static int	win_value()
 	return (WIN_VALUE);
 }
 
-int	play_game(int size)
+int	play_game(int size, char *name)
 {
 	int	board[5][5] = {{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}};
 	int	score;
@@ -93,17 +98,17 @@ int	play_game(int size)
 	add_number(board, size);
 	while (1)
 	{
-		if (play_round(board, size, &score))
-			return (score);
 		if (max_tile < win_value() && get_max(board, size) >= win_value())
 		{
-			if (player_continues() == 0)
+			if (player_continues(score, name) == 0)
 				break ;
 		}
+		max_tile = get_max(board, size);
+		if (play_round(board, size, &score))
+			return (score);
 		add_number(board, size);
 		if (is_game_over(board, size))
-			break ;
-		max_tile = get_max(board, size);
+			return (game_over_screen(score, name));
 	}
 	return (score);
 }

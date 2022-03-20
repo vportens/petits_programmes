@@ -17,6 +17,7 @@ SRCS =  print_game.c				\
 	play_game.c \
 	add_tile.c \
 	game_over.c	\
+	end_screen.c \
 	score_page.c	\
 	gnl.c \
 	main.c

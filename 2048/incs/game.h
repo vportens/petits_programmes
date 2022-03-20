@@ -7,7 +7,7 @@
 
 enum e_const
 {
-	WIN_VALUE = 2048
+	WIN_VALUE = 32
 };
 
 char	*ft_itoa(int nbr);
@@ -26,9 +26,10 @@ int		is_full(int board[5][5], int size);
 int		add_number(int board[5][5], int size);
 int		is_game_over(int board[5][5], int size);
 int		play_round(int board[5][5], int size, int *score);
-int		play_game(int size);
+int		play_game(int size, char *name);
 void	exit_ncurses(int code);
 void	print_score(int *score);
+int		game_over_screen(int score, char *name);
 
 int	get_next_line(int fd, char **line);
 int	score_page(char *file_name);

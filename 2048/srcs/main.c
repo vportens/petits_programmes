@@ -41,7 +41,7 @@ static void display_main_menu(void)
 		exit_ncurses(1);
 }
 
-void	main_menu(void)
+void	main_menu(char *name)
 {
 	int	c;
 
@@ -55,12 +55,12 @@ void	main_menu(void)
 		{
 			case '1':
 			{
-				play_game(4);
+				play_game(4, name);
 				break ;
 			}
 			case '2':
 			{
-				play_game(5);
+				play_game(5, name);
 				break ;
 			}
 			case '3':
@@ -76,9 +76,15 @@ void	main_menu(void)
 	}
 }
 
-int main()
+int main(int argc, char **argv)
 {
+	char	*name;
+
+	if (argc > 1)
+		name = argv[1];
+	else
+		name = "Player 1";
 	init_ncurses();
-	main_menu();
+	main_menu(name);
 	exit_ncurses(0);
 }
