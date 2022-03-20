@@ -65,8 +65,11 @@ int	add_score_to_file(int size, int score, char *pseudo, char *file_name)
 		}
 		if (i < 12)
 			tab[i] = line;
+		else
+			free(line);
 		i++;
 	}
+	free(line);
 	close(fd);
 
 	int fd_new;
@@ -86,7 +89,7 @@ int	add_score_to_file(int size, int score, char *pseudo, char *file_name)
 	i = 0;
 	while (tab[i])
 	{
-	//	free(tab[i]);
+		free(tab[i]);
 		i++;
 	}
 	free(tab);
@@ -176,6 +179,7 @@ int	score_page(char *file_name)
 		free(line);
 
 	}
+	free(line);
 	close(fd);
 	refresh();
 	getch();

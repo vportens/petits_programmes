@@ -44,7 +44,7 @@ $(NAME): $(OBJS)
 	
 	
 
-$(OBJ_DIR)/%.o : %.c $(OBJ_DIR) $(HEADER)
+$(OBJ_DIR)/%.o : %.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -o $@ -c $<  -I incs
 
 $(OBJ_DIR) :
