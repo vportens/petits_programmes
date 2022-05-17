@@ -1,0 +1,6 @@
+redcross :	mac : 17, 0L
+			linux : 33, (1L << 17)
+			
+
+move asdw : mac 0 = a | 2 = d | 13 = w | 1 = s
+			linux 97 = a | 100 = d | 119 = w | 115 = s 
