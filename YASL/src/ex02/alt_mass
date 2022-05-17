@@ -1,0 +1,41 @@
+#!../../ressources/yasl_linux
+
+4 != ? ( 0 exit )
+//	if ac != 4
+//		exit 0
+
+!	// pop name of program
+
+eval:1		// str to int first elem
+=:2 0:!		// dup "+" to stack 2 and drop it from stack 0
+eval:1		// str to int first elem
+2:=:1 2:!	// dup "+" to stack 1 and drop it from stack 2
+
+//	stack:
+//	"+"	(op)
+//	3	(last arg)
+//	1	(first arg)
+
+{
+	1:!			// pop
+
+	1:eval		// do op
+
+	print		// print res
+	"\n" print	// print new line
+} do_op
+
+// parsing
+"-":1 1:%== ? do_op :
+(1:! "+":1 1:%== ? do_op :
+(1:! "*":1 1:%== ? do_op :
+(1:! "/":1 1:%== ? do_op :
+(1:! "%":1 1:%== ? (2#(1:!) 1:%:1 1:print "\n" print) :
+(1:! "<":1 1:%== ? do_op :
+(1:! ">":1 1:%== ? do_op :
+(1:! "<=":1 1:%== ? do_op :
+(1:! ">=":1 1:%== ? do_op :
+(1:! "==":1 1:%== ? do_op :
+(1:! "!=":1 1:%== ? (2#(1:!) 1:!=:1 1:print "\n" print) :
+(1:! 1:print " isn't supported\n" print
+)))))))))))
