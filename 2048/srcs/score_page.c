@@ -149,7 +149,6 @@ int	add_score_to_file(int size, int score, char *pseudo, char *file_name)
 	if (i < 10)
 		tab[i] = line;
 	i++;
-	free(line);
 	close(fd);
 
 	creat_and_fill_file(tab, file_name);

@@ -7,7 +7,7 @@
 
 enum e_const
 {
-	WIN_VALUE = 32
+	WIN_VALUE = 2048
 };
 
 
