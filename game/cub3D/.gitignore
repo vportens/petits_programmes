@@ -1,0 +1,7 @@
+*.o
+objs/*
+ret
+cub3D
+.sw*
+.vscode
+valgrind*
