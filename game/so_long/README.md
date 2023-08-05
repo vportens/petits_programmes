@@ -1,7 +1,7 @@
 # so_long
 2D game using **mlx** for gestion of graphique. Helps Nemo eat all the shrimps then escape the ocean.  
 Use bonus mode to see animated shrimps and crab how want eat you.
-
+Watch out for the crabs - they might eat you!
 
 ## Commande to Run
 **Classic**  
