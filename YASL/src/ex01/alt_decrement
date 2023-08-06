@@ -1,0 +1,13 @@
+#!../../ressources/yasl_linux
+
+2#(0:!)		// drop 2 first arg (ac and name of program)
+
+0:#:1		// count elem in stack 0, output res to stack 1
+1:%@		// while count != 0
+(
+	0:print	// print first elem stack 0
+	"\n":0	// add "\n" to stack 0
+	0:print	// print "\n"
+	1:1		// add 1 to stack 1
+	1:-:1	// sub 1 to count
+)

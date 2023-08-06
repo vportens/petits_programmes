@@ -1,0 +1,243 @@
+
+yasl(1)                   BSD General Commands Manual                  yasl(1)
+
+NNAAMMEE
+     YY..AA..SS..LL.. — Multiple‐Stack paradigm language
+
+SSYYNNOOPPSSIISS
+     #!yasl
+
+     yyaassll _y_a_s_l___s_c_r_i_p_t___f_i_l_e
+
+DDEESSCCRRIIPPTTIIOONN
+     YASL is a interpreted language based on a multiple‐reversed‐stack para‐
+     digm.  It has first been design for high‐level accounting and financial
+     operations by non‐IT‐specialist users.
+
+
+LLAANNGGUUAAGGEE SSTTRRUUCCTTUURREE
+     A Yasl program is composed of a list of operations, executed from the
+     first to the last one.  Operations all use one or more stacks. They can
+     be grouped within a subset or a function.  A test and a loop control
+     structures are also provided.
+
+
+MMuullttiippllee RReevveerrsseedd SSttaacckk CCOONNCCEEPPTT
+     Yasl runtime machine disposes of a specific amount of stack (default is
+     10). Each stack is reversed : it grows up, and push or pop operations are
+     made at the base of the stack.
+
+
+            "Hello"
+            "World"
+            17
+            1.0
+            ‐‐‐‐‐‐‐
+
+      Then push another integer value 11 :
+
+
+            "Hello"
+            "World"
+            17
+            1.0
+            11
+            ‐‐‐‐‐‐
+
+     Each stack accepts four different types of data :  iinntteeggeerr, ssttrriinngg, ffllooaatt
+     and lliisstt. The Yasl operations are provided to operate on stack elements.
+     Some cross‐type operations are allowed, usually the type of the first
+     element will be the result type. If a cross‐type operation is meaning‐
+     less, an error occurs and stops the program.
+
+
+
+SSTTAACCKK SSEELLEECCTTOORR
+     For each yasl operation, a stack selector can be used to specify an input
+     stack number and an output stack number, according the following the syn‐
+     tax :
+
+     <input_stack>::<operation>::<output_stack>
+
+     In case of the input or output selector is meaningless, yasl ignores it.
+     If no input or output stack is provided, the current input and output
+     stack is used. They both default to 0 at the begining of the program.
+
+     The alternative syntax :
+
+     $$<input_from_stack>::<operation>::$$<output_from_stack>
+
+     is also available, as also a mix of both. Instead of a stack number used
+     by the operation, this syntax indicate which stack to pop on to get the
+     input or output stack number. The ’from’ is poped first, if present, then
+     the ’to’.
+
+     A stack selector for a subset or a function impacts all operations in it.
+
+
+OOPPEERRAATTIIOONN MMOODDIIFFIIEERRSS
+     Two modifiers are available in yasl for almost all operations :
+
+     −−   ## : this modifier pop the first argument of the input stack, expects
+         an strictly positive integer, and then repeat the folowing operation
+         this number of times.
+
+     −−   %% : this modifier keep the parameters needed by the operation on the
+         stack, rather than pop them.  It does not affect the ## operation mod‐
+         ifier, nor the $$<input_from_stack>:: and ::$$<output_from_stack> stack
+         selectors.
+
+     Modifiers are inserted before the operation :
+
+     <modifier><operation>
+
+
+
+PPUUSSHH OOPPEERRAATTIIOONN
+     You can simply push information on a stack. A single element alone indi‐
+     cates you want to push it on a stack.
+
+     <integer>
+
+     will push that integer on the current stack.
+
+     "<string>"
+
+     will push the quoted string on the stack.
+
+     <float>.<point>
+
+     will push this floating point number on the stack.
+
+     It is not possible to directely push a list element on the stack.  For
+     the previous three element types, a ‘C’ syntax‐like is provided for con‐
+     venience.
+
+
+
+OOPPEERRAATTOORRSS
+     To perform operations on the stacks, the folowwing operators are avail‐
+     able :
+
+     −−   ++ ‐‐ ** // %% : the five classic operator. They uses two arguments on the
+         input stack, and may not work for all combination of element types.
+         In that case, runtime is stopped with an error.
+
+     −−   ## : count. Add to the output stack the number of elements in the
+         input stack.
+
+     −−   !! : drop. Delete the first argument on stack.
+
+     −−   == : dup. Duplicate the first argument on stack.
+
+     −−   << >> <<== >>== ==== !!== : the comparison operators. They use two arguments on
+         stack.
+
+     −−   ^^ !!^^ : roll and unroll. The first argument integer N is poped, and
+         then the N folowing arguments are rolled or unrolled by one position.
+
+     −−   &&&& |||| ~~~~ : logical operators. AND and OR uses the first two argu‐
+         ments, NOT only the first one.
+
+     −−   <<<< >>>> : left and right shifts. The second argument is shifted by the
+         first argument times.
+
+     −−   [[]] : list. The first argument represents the number of following
+         arguments on stack to put in the list.
+
+     −−   ]][[ : unlist. The first argument is exploded on the stack. The count
+         of created elements is then pushed.
+
+     −−   [[##]] : list count. The number of elements within the first argument on
+         stack is pushed.
+
+     −−   ]]##[[ : get list item. The first argument on stack is the index in the
+         second argument of the element to extract.
+
+     −−   && || ~~ : binary operators. AND and OR uses the first two arguments,
+         NOT only the first one.
+
+
+
+SSUUBBSSEETT AANNDD FFUUNNCCTTIIOONN
+     A subset can be created by placing an arbitrary number of operations
+     inside parenthesis.
+
+     (( <operation> [<operation> [...]] ))
+
+     A function can be created by placing an arbitrary number of operations
+     inside braces, followed by a function name.
+
+     {{ <operation> [<operation> [...]] }} <function_name>
+
+     A previously defined function can be called from anywhere in the same
+     scope, by simply mentionning the function name, that will act like other
+     operators.
+
+     The subset and the function are a unique operation in their own scope.
+
+
+
+CCOONNTTRROOLL SSTTRRUUCCTTUURREE
+     A test control structure, and a loop control structure are provided.
+
+     −−   The test structure is defined using the ?? operator and the optional ::
+         operator :
+
+          ?? <operation>
+          ?? <operation> :: <operation>
+
+         Depending if the first argument on stack is true, the folowing opera‐
+         tion is done. If present, the second operation is done when false.
+
+
+     −−   The loop structure is defined by the @@ operator :
+
+          @@ <operation>
+
+         The operation will be repeated until the first argument on stack
+         becomes false.
+
+
+
+SSTTAANNDDAARRDD LLIIBBRRAARRYY
+     Yasl comes with a bunch of standard predefined functions.
+
+     −−   pprriinntt : prints out the first stack argument.
+
+     −−   rreeaadd : reads a line from standard input. Does not work in interactive
+         mode.
+
+     −−   eevvaall : parse and execute the first string argument.
+
+     −−   eexxiitt : ends the program, first argument as shell exit code.
+
+
+
+EEXXAAMMPPLLEE
+           #!yasl
+
+           #!  // drop arguments
+
+           "YASL\n"
+           "my name is "
+           "Hello, "
+           #
+           #print
+
+     This simple example drops command‐line arguments, pushes on stack several
+     part of a message, and then prints it.
+
+
+
+HHIISSTTOORRYY
+     YASL stands for Yasl is an Accounting Stack Language. It was first design
+     by DEC for South Africa accounting managers using OSF/1 (DEC Unix OS for
+     workstations).  A specific standard library was provided to handle local
+     rates and taxes systems. This one was probably lost in 1998 when Compaq
+     aquired DEC. Nowadays, its use is pretty much limited, due to lack of
+     powerfull framework. YASL is reported still being used in Malaisia and
+     Singapore. The YASL name have been also reused for an open‐source
+     project, a Java framework over Swing.
+
+BSD                              March 4, 2022                             BSD

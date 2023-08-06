@@ -1,0 +1,17 @@
+#!../../ressources/yasl_linux
+
+3 < ? ( 0 exit )
+!
+
+0:=:1 "0":1 1:<=:1 1:? ( "use int > 0\n":0 0:print 0:0 0:exit )
+0:=:1 "9":1 1:>:1 1:? ( "use int\n":0 0:print 0:0 0:exit )
+
+0:0 0:+:2				// push av[1] on stack 2 (int x) (str to int)
+
+# #(					// for count times, do
+	2:=:0				// dup x on top of stack 0
+	0:#(0:=:3 3:print)	// print x time av[x]
+	0:!					// pop av[x]
+	"\n":0 0:print		// print "\n"
+	1:2 2:+:2			// do x + 1
+)
